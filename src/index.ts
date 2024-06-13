@@ -1,5 +1,6 @@
 // array
 export { closestNumberInArray } from "./array/closestNumberInArray"
+export { randomItemInArray } from "./array/randomItemFromArray"
 export { shuffleArray } from "./array/shuffleArray"
 // dom
 export { cls } from "./dom/cls"
