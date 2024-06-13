@@ -11,6 +11,9 @@ export function isSSR(): boolean {
 export function isBrowser(): boolean {
   return !isServer()
 }
+export function isClient(): boolean {
+  return isBrowser()
+}
 export function serverOnly(callback: () => any) {
   return isServer() ? callback?.() : null
 }
@@ -52,7 +55,6 @@ export function isHandheldDevice(): boolean {
     )
   )
 }
-
 export function isTouchDevice() {
   return browserOnly(
     () =>
@@ -60,6 +62,9 @@ export function isTouchDevice() {
       navigator.maxTouchPoints > 0 ||
       navigator?.["msMaxTouchPoints"] > 0
   )
+}
+export function isAppleDevice (): boolean {
+  return isSafari() || isiOS()
 }
 
 /**
@@ -79,7 +84,10 @@ export function isFirefox(): boolean {
 }
 export function isSafari(): boolean {
   return browserOnly(
-    () => navigator.userAgent.toLowerCase().indexOf("safari") > -1
+    () => {
+      const userAgent = window.navigator.userAgent
+      return userAgent.includes("Safari") && !userAgent.includes("Chrome")
+    }
   )
 }
 
