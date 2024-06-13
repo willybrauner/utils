@@ -1,12 +1,14 @@
 // array
 export { closestNumberInArray } from "./array/closestNumberInArray"
-export { randomItemInArray } from "./array/randomItemFromArray"
+export { randomItemFromArray } from "./array/randomItemFromArray"
 export { shuffleArray } from "./array/shuffleArray"
 // dom
 export { cls } from "./dom/cls"
 export { listen, listenOnce, listenCompose } from "./dom/listener"
 // envs
 export * from "./envs/envs"
+// interpolate
+export { interpolateColor } from "./interpolate/interpolateColor"
 // maths
 export { lerp } from "./math/lerp"
 export { clamp } from "./math/clamp"
