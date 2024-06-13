@@ -1,0 +1,39 @@
+{
+  "name": "@wbe/utils",
+  "version": "0.1.0",
+  "description": "javascript & nodejs utils",
+  "author": "Willy Brauner",
+  "type": "module",
+  "license": "MIT",
+  "main": "dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "private": false,
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/willybrauner/utils.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsup",
+    "build:watch": "tsup --watch --sourcemap",
+    "test:watch": "vitest",
+    "test": "vitest run",
+    "pre-publish": "npm run build && npm run test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.3",
+    "jsdom": "^22.1.0"
+  },
+  "prettier": {
+    "semi": false
+  }
+}
