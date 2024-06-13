@@ -13,6 +13,7 @@ npm i @wbe/utils
 - [array](src/array)
 - [dom](src/dom)
 - [envs](src/envs)
+- [interpolate](src/interpolate)
 - [math](src/math)
 - [promise](src/promise)
 - [social](src/social)
