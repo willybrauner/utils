@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest"
-import { cls } from "../../src/dom/cls"
+import { cls } from "../../src"
 
 describe("cls", () => {
   it("should compose cls list", () => {
@@ -19,5 +19,8 @@ describe("cls", () => {
     expect(cls(false && "foo")).toBe("")
     expect(cls(undefined)).toBe("")
     expect(cls(null)).toBe("")
+
+    const className: string | undefined = "Test"
+    expect(cls(className)).toBe(className)
   })
 })
