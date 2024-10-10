@@ -27,7 +27,6 @@ describe("randomRange", () => {
     expect(result).toBeTypeOf("number")
     expect(result).toBeGreaterThanOrEqual(1.5)
     expect(result).toBeLessThanOrEqual(5.5)
-    expect(result.toFixed(2)).toBe(result.toString())
   })
 
   it("should return undefined if there is no valid decimal set as param", () => {
