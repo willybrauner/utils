@@ -8,15 +8,25 @@
  * Facebook
  * @param siteUrl
  */
-export const facebookShareUrl = (siteUrl: string = window.location.href): string =>
-  `https://www.facebook.com/sharer/sharer.php?u=${siteUrl}`
+export const facebookShareUrl = (
+  siteUrl: string = window.location.href,
+): string => `https://www.facebook.com/sharer/sharer.php?u=${siteUrl}`
 
 /**
  * LinkedIn
  * @param siteUrl
  */
-export const linkedInShareUrl = (siteUrl: string = window.location.href): string =>
-  `https://www.linkedin.com/sharing/share-offsite/?url=${siteUrl}`
+export const linkedInShareUrl = (
+  siteUrl: string = window.location.href,
+): string => `https://www.linkedin.com/sharing/share-offsite/?url=${siteUrl}`
+
+/**
+ * BlueSky
+ * @param siteUrl
+ */
+export const blueSkyShareUrl = (
+  siteUrl: string = window.location.href,
+): string => `https://bsky.app/intent/compose?text=${siteUrl}`
 
 /**
  * Twitter
@@ -29,7 +39,7 @@ export const twitterShareUrl = (
   url: string = window.location.href,
   text?: string,
   via?: string,
-  hashtags?: string
+  hashtags?: string,
 ): string =>
   [
     `https://twitter.com/intent/tweet`,
@@ -38,7 +48,7 @@ export const twitterShareUrl = (
     via && `&text=${via}`,
     hashtags && `&hashtags=${hashtags}`,
   ]
-    .filter(e => e)
+    .filter((e) => e)
     .join("")
 
 /**
@@ -69,7 +79,7 @@ export const facebookMessengerShareUrl = (
 export const whatsappShareUrl = (
   url: string,
   text: string,
-  isHandedDevice: boolean
+  isHandedDevice: boolean,
 ): string =>
   isHandedDevice
     ? `whatsapp://send?text=${text}%20${url}`
@@ -84,7 +94,7 @@ export const whatsappShareUrl = (
 export const nativeSharePopin = async (
   title: string = document.title,
   text: string,
-  url: string = window.location.href
+  url: string = window.location.href,
 ) => {
   try {
     await navigator.share({ title, text, url })
