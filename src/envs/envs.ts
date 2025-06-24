@@ -51,19 +51,27 @@ export function isiOS(): boolean {
 export function isHandheldDevice(): boolean {
   return browserOnly(() =>
     /(tablet|ipad|playbook|silk)|(android(?!.*mobi))|Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/i.test(
-      navigator.userAgent
-    )
+      navigator.userAgent,
+    ),
   )
 }
 export function isTouchDevice() {
-  return browserOnly(
-    () =>
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      navigator?.["msMaxTouchPoints"] > 0
-  )
+  return browserOnly(() => {
+    // iOS devices
+    if ("standalone" in navigator) return true
+
+    const hasCoarse = window.matchMedia("(pointer: coarse)").matches
+    if (hasCoarse) return true
+
+    // prioritize mouse control
+    const hasPointer = window.matchMedia("(pointer: fine)").matches
+    if (hasPointer) return false
+
+    // Otherwise, fall-back to older style mechanisms
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0
+  })
 }
-export function isAppleDevice (): boolean {
+export function isAppleDevice(): boolean {
   return isSafari() || isiOS()
 }
 
@@ -74,20 +82,17 @@ export function isAppleDevice (): boolean {
 export function isChrome(): boolean {
   return browserOnly(
     () =>
-      /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
+      /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor),
   )
 }
 export function isFirefox(): boolean {
   return browserOnly(
-    () => navigator.userAgent.toLowerCase().indexOf("firefox") > -1
+    () => navigator.userAgent.toLowerCase().indexOf("firefox") > -1,
   )
 }
 export function isSafari(): boolean {
-  return browserOnly(
-    () => {
-      const userAgent = window.navigator.userAgent
-      return userAgent.includes("Safari") && !userAgent.includes("Chrome")
-    }
-  )
+  return browserOnly(() => {
+    const userAgent = window.navigator.userAgent
+    return userAgent.includes("Safari") && !userAgent.includes("Chrome")
+  })
 }
-
