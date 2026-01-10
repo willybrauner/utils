@@ -4,7 +4,6 @@
     "composite": false,
     "module": "esNext",
     "target": "es6",
-    "moduleResolution": "node",
     "jsx": "react",
     "declaration": true,
     "noImplicitAny": false,
