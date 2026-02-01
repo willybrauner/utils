@@ -7,6 +7,7 @@ export { shuffleArray } from "./array/shuffleArray"
 export { cls } from "./dom/cls"
 export { cssVariable } from "./dom/cssVariable"
 export { listen, listenOnce, listenCompose } from "./dom/listener"
+export { styles } from "./dom/styles"
 
 // envs
 export * from "./envs/envs"
