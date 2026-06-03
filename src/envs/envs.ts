@@ -55,7 +55,7 @@ export function isHandheldDevice(): boolean {
     ),
   )
 }
-export function isTouchDevice() {
+export function isTouchDevice(): boolean {
   return browserOnly(() => {
     // iOS devices
     if ("standalone" in navigator) return true
