@@ -45,7 +45,7 @@ pnpm build
 pnpm pre-publish
 
 # increment version in package.json
-npm verion {patch|minor|major}
+npm version {patch|minor|major}
 
 # push to github with tags
 git push --follow-tags
